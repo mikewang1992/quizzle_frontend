@@ -30,22 +30,42 @@
             <div class="main_quiz_creation_inner">
               <div class="questions_head">Question 1</div>
               <div class="input_group createQuizQUS">
-                <input class="form-control input_style quizId" type="text" placeholder="Question">
+                <input class="form-control input_style quizQuestion" type="text" placeholder="Question">
               </div>
+              <select class="custom-select timeSelect" id="inputGroupSelect01">
+                <option selected value="60">Set time</option>
+                <option value="15">15 seconds</option>
+                <option value="30">30 seconds</option>
+                <option value="60">60 seconds</option>
+                <option value="90">90 seconds</option>
+                <option value="120">120 seconds</option>
+              </select>
               <div class="questions_head">Question 1 Answers</div>
               <div class="input_group createQuizANS">
-                <input class="form-control input_style quizId" type="text" placeholder="Answer A">
-                <input class="form-control input_style quizId" type="text" placeholder="Answer B">
-                <input class="form-control input_style quizId" type="text" placeholder="Answer C">
-                <input class="form-control input_style quizId" type="text" placeholder="Answer D">
+                <div class="ans_group">
+                  <input class="form-control input_style quizAnswer" type="text" placeholder="Answer A">
+                  <input class="quizAnswer_check checkbox-success" type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+                <div class="ans_group">
+                  <input class="form-control input_style quizAnswer" type="text" placeholder="Answer B">
+                  <input class="quizAnswer_check" type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+                <div class="ans_group">
+                  <input class="form-control input_style quizAnswer" type="text" placeholder="Answer C">
+                  <input class="quizAnswer_check" type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+                <div class="ans_group">
+                  <input class="form-control input_style quizAnswer" type="text" placeholder="Answer D">
+                  <input class="quizAnswer_check" type="checkbox" aria-label="Checkbox for following text input">
+                </div>
               </div>
             </div>
-            <div class="question_add">
-              <a href="" class="question_add_btn">+</a>
-            </div>
+          </div>
+          <div class="question_add">
+            <a href="#" class="question_add_btn">+</a>
           </div>
         </div>
-        <a href="/createQuiz.html" class="btn btn-lg btn-secondary btn_style">Create Quiz</a>
+        <a href="#" class="btn btn-lg btn-secondary btn_style CreateQuiz">Create Quiz</a>
       </main>
     
       <footer class="mastfoot mt-auto">

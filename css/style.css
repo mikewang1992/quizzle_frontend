@@ -78,7 +78,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
 }
 .input_style {
   background: rgba(255, 255, 255, 0.3);
@@ -131,7 +130,7 @@ body {
 }
 .main_quiz_creation_inner{
   margin: 20px 0px;
-  padding: 0px 10px;
+  padding: 50px 10px;
   padding-top: 20px;
   border: 1px solid white;
   border-radius: 20px;
@@ -159,6 +158,22 @@ body {
 }
 .createQuizANS input{
   margin: 5px 0px;
+}
+.quizAnswer_check{
+  width: 24px;
+  height: 24px;
+  margin-left: 10px!important;
+  cursor: pointer;
+}
+.ans_group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.timeSelect{
+  width: 40%;
+  margin:40px;
 }
 /*
  * Footer

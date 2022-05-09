@@ -16,7 +16,7 @@ a:hover {
 
 html,
 body {
-  height: 100%;
+  min-height: 1000px;
   /* background-color: #333; */
   background:url(/dist/main.png);
   background-position: center;
@@ -40,7 +40,7 @@ body {
  * Header
  */
 .masthead {
-  margin-bottom: 2rem;
+  margin-bottom: 200px;
 }
 
 .masthead-brand {
@@ -74,9 +74,26 @@ body {
   color: #fff;
   border-bottom-color: #fff;
 }
-
-
-
+.input_group{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.input_style {
+  background: rgba(255, 255, 255, 0.3);
+  width: 50%;
+  color: white;
+  border-radius: 50px;
+  border:2px solid #CEC8DD;
+}
+.input_style:focus{
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+.input_style::placeholder{
+  color: white;
+}
 /*
  * Cover
  */
@@ -91,7 +108,7 @@ body {
   border: 3px solid #A4077A;
   border-radius: 50px;
   width: 150px;
-  padding: 10px 0px;
+  padding: 8px 0px;
 }
 .btn_style:hover{
   border: 3px solid transparent;
@@ -111,6 +128,37 @@ body {
   filter: drop-shadow(0px 10px 3px rgba(0, 0, 0, 0.161));
   font-size: 1.7rem;
   font-weight: bold;
+}
+.main_quiz_creation_inner{
+  margin: 20px 0px;
+  padding: 0px 10px;
+  padding-top: 20px;
+  border: 1px solid white;
+  border-radius: 20px;
+}
+.question_add{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.question_add_btn{
+  border-radius: 50px;
+  border:2px solid white;
+  padding:10px 15px;
+  display:block;
+  font-size:20px;
+  font-weight: bold;
+}
+.questions_head{
+  font-size: 24px;
+  font-weight: bold;
+}
+.createQuizANS{
+  flex-direction: column;
+}
+.createQuizANS input{
+  margin: 5px 0px;
 }
 /*
  * Footer

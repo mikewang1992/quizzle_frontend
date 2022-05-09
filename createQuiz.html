@@ -10,13 +10,13 @@
   </head>
   <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
+      <header class="masthead">
         <div class="inner masthead_inner">
           <a href="/index.html"><h3 class="masthead-brand">Quizzle</h3></a>
           <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="/index.html">Home</a>
+            <a class="nav-link" href="/index.html">Home</a>
             <a class="nav-link" href="/joinQuiz.html">Join Quiz</a>
-            <a class="nav-link" href="/createQuiz.html">Create Quiz</a>
+            <a class="nav-link active" href="/createQuiz.html">Create Quiz</a>
             <a class="nav-link" href="/contact.html">Contact</a>
           </nav>
           <a href="#" class="btn btn-lg btn-secondary btn_style">Learn more</a>
@@ -24,14 +24,28 @@
       </header>
       
       <main class="inner cover hero_cover">
-        <h1 class="cover-heading">QUIZZLE</h1>
-        <h2 class="cover-heading">Tool for creating on-line quizzes</h2>
-        <p class="lead">Get feedback from your users through well-arranged quizzes that you can add to your blackboard</p>
-        <p class="lead">Test your knowledge in quizzes that torment your brain</p>
-        <div class="btn_group">
-          <a href="/createQuiz.html" class="btn btn-lg btn-secondary btn_style">Create Quiz</a>
-          <a href="/joinQuiz.html" class="btn btn-lg btn-secondary btn_style">Join Quiz</a>
+        <h2 class="cover-heading">Create you question here</h2>
+        <div class="main_quiz">
+          <div class="main_quiz_creation">
+            <div class="main_quiz_creation_inner">
+              <div class="questions_head">Question 1</div>
+              <div class="input_group createQuizQUS">
+                <input class="form-control input_style quizId" type="text" placeholder="Question">
+              </div>
+              <div class="questions_head">Question 1 Answers</div>
+              <div class="input_group createQuizANS">
+                <input class="form-control input_style quizId" type="text" placeholder="Answer A">
+                <input class="form-control input_style quizId" type="text" placeholder="Answer B">
+                <input class="form-control input_style quizId" type="text" placeholder="Answer C">
+                <input class="form-control input_style quizId" type="text" placeholder="Answer D">
+              </div>
+            </div>
+            <div class="question_add">
+              <a href="" class="question_add_btn">+</a>
+            </div>
+          </div>
         </div>
+        <a href="/createQuiz.html" class="btn btn-lg btn-secondary btn_style">Create Quiz</a>
       </main>
     
       <footer class="mastfoot mt-auto">

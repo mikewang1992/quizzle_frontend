@@ -2,6 +2,7 @@ a,
 a:focus,
 a:hover {
   color: #fff;
+  text-decoration: none;
 }
 
 .btn-secondary,
@@ -16,7 +17,10 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
+  /* background-color: #333; */
+  background:url(/dist/main.png);
+  background-position: center;
+  background-size: cover;
 }
 
 body {
@@ -41,6 +45,12 @@ body {
 
 .masthead-brand {
   margin-bottom: 0;
+}
+
+.masthead_inner{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .nav-masthead .nav-link {
@@ -73,12 +83,35 @@ body {
 .cover {
   padding: 0 1.5rem;
 }
-.cover .btn-lg {
+.btn-lg {
   padding: .75rem 1.25rem;
   font-weight: 700;
 }
-
-
+.btn_style{
+  border: 3px solid #A4077A;
+  border-radius: 50px;
+  width: 150px;
+  padding: 10px 0px;
+}
+.btn_style:hover{
+  border: 3px solid transparent;
+}
+.btn_group .btn_style{
+  margin: 0px 20px;
+}
+.hero_cover{
+  text-align: center;
+}
+.hero_cover h1{
+  filter: drop-shadow(0px 10px 3px rgba(0, 0, 0, 0.161));
+  font-size: 3rem;
+  font-weight: bold;
+}
+.hero_cover h2{
+  filter: drop-shadow(0px 10px 3px rgba(0, 0, 0, 0.161));
+  font-size: 1.7rem;
+  font-weight: bold;
+}
 /*
  * Footer
  */

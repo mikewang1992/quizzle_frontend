@@ -1,27 +1,27 @@
 $( document ).ready(function() {
-    console.log( "jQuery ready!" );
-    // $.ajax({url: "http://localhost:8081/", success: function(result){
-    //   console.log(result);
-    // }});
-    // Make a request for a user with a given ID
-    // axios.get('https://jsonplaceholder.typicode.com/todos/1')
-    //   .then(function (response) {
-    //     console.log('axios ready, dummy api respose')
-    //     // handle success
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     console.log(error);
-    //   })
-    // func/populate
-      axios.get('http://localhost:8081/quiz/6275de35a3c5289e6d24656d')
-      .then(function (response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
+  $('.joinQuiz').click(function(e){
+    var quizId=$('.quizId').val()
+    if(!quizId){
+      alert('Please fill Quiz ID')
+      return
+    }
+    // axios.get(`http://localhost:8081/quiz/6275de35a3c5289e6d24656d`)
+    axios.get(`http://localhost:8081/quiz/${quizId}`)
+    .then(function (response) {
+      // handle success
+      console.log(response);
+      if(response.status==200){
+        localStorage.removeItem('quiz')
+        localStorage.setItem('quiz', JSON.stringify(response.data));
+        window.location.href='/playQuiz.html'
+      }else{
+        alert('wrong ID')
+      }
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+      alert('server error')
+    })
+  })
 });

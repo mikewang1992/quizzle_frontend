@@ -15,13 +15,13 @@ $( document ).ready(function() {
     //     console.log(error);
     //   })
     // func/populate
-      axios.get('http://localhost:8081/quiz/6275de35a3c5289e6d24656d')
-      .then(function (response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
+      // axios.get('http://localhost:8081/quiz/6275de35a3c5289e6d24656d')
+      // .then(function (response) {
+      //   // handle success
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   // handle error
+      //   console.log(error);
+      // })
 });

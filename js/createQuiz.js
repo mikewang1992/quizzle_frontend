@@ -1,5 +1,6 @@
 $( document ).ready(function() {
   console.log( "jQuery ready!" );
+
   $('.question_add_btn').click(function(e){
     e.preventDefault();
     var questionNum=$('.main_quiz_creation_inner').length+1
@@ -38,19 +39,24 @@ $( document ).ready(function() {
       </div>
     </div>`)
   });
+
   $('.CreateQuiz').click(function(e){
     e.preventDefault();
     var markData=[];
     $.each($('.main_quiz_creation_inner'),function(i,v){
       obj1={}
-      // var markorder=0;
       var marktime=$(v).find('.timeSelect').val()
-      var multiAns=false;
-      console.log($(v).find('.quizQuestion'))
+      console.log('Question',$(v).find('.quizQuestion'))
       var markQuestion=$(v).find('.quizQuestion').val()
+      if(!markQuestion){
+        alert(`Question ${i+1} cannot be empty`)
+        return
+      }
+      var markorder=0;
+      var multiAns=false;
       var markChoices=[]
       var mutiAnsCount=0
-      console.log($(v).find('.quizAnswer'))
+      console.log('QuestionGroup',$(v).find('.quizAnswer'))
       $.each($(v).find('.quizAnswer'),function(iq,vq){
         var obj2 = {}
         obj2.text= $(vq).val()
@@ -64,45 +70,34 @@ $( document ).ready(function() {
         console.log(mutiAnsCount)
         markChoices.push(obj2)
       })
+      console.log('AnswersData',markChoices)
       obj1.question=markQuestion
       obj1.choices=markChoices
+      obj1.order=markorder
       obj1.time=marktime
       obj1.multipleanswer=multiAns
       markData.push(obj1)
     })
     console.log(markData)
+
+    axios({
+      method: 'post',
+      url: 'http://localhost:8081/quiz/create',
+      data: {
+        author: "",
+        questions: markData
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+      $('.hero_cover').hide()
+      $('.createResult').show()
+      $('.showQuizId').text(response.data.created_id)
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
   })
 
-  // axios({
-  //   method: 'post',
-  //   url: 'http://localhost:8081/quiz/create',
-  //   data: {
-  //     question: [{
-  //       "question": "string",
-  //       "choices": [
-  //         {
-  //           "text": "string",
-  //           "correct": true
-  //         }
-  //       ],
-  //       "order": 0,
-  //       "time": 60,
-  //       "multipleanswer": false
-  //     }]
-  //   }
-  // })
-  // .then(function (response) {
-  //   console.log(response);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // })
 
-  // axios.get('http://localhost:8081/quiz/')
-  // .then(function (response) {
-  //   console.log(response);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // })
 });

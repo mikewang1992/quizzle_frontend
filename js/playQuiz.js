@@ -96,26 +96,26 @@ $( document ).ready(function() {
 
     console.log(finalAnswerCorrectCount,parseInt($(currentShowQuestion).attr('mutiplecount')))
     var LS_answerSheet=parseInt(localStorage.getItem('answerSheet'))
-      if(parseInt(currentQuestionOrder)<=parseInt($(currentShowQuestion).length)){
-        // if still not finish question
-        if(finalAnswerCorrectCount==parseInt($(currentShowQuestion).attr('mutiplecount'))){
-          // if ans is correct
-          localStorage.setItem('answerSheet',LS_answerSheet+1);
-        }
-        var LS_order = parseInt(localStorage.getItem('order'))
-        localStorage.setItem('order',LS_order+1);
-        $('.progress').attr('order',LS_order+1)
-        showQuestions(LS_order+1)
-      }else{
-      // question finsihed
-      $('.mainSection').hide()
-      $('.status').hide()
-      $('.answer_btn_group').hide()
-      $('.submit').hide()
-      $('.correctCount').text(`${LS_answerSheet} / ${$('.answer_btn_group_inner').length}`)
-      $('.sideSection').show()
-      $('.btn_group').show()
-    }
+    if(parseInt(currentQuestionOrder)<parseInt($(currentShowQuestion).length)){
+      // if still not finish question
+      if(finalAnswerCorrectCount==parseInt($(currentShowQuestion).attr('mutiplecount'))){
+        // if ans is correct
+        localStorage.setItem('answerSheet',LS_answerSheet+1);
+      }
+      var LS_order = parseInt(localStorage.getItem('order'))
+      localStorage.setItem('order',LS_order+1);
+      $('.progress').attr('order',LS_order+1)
+      showQuestions(LS_order+1)
+    }else{
+    // question finsihed
+    $('.mainSection').hide()
+    $('.status').hide()
+    $('.answer_btn_group').hide()
+    $('.submit').hide()
+    $('.correctCount').text(`${LS_answerSheet} / ${$('.answer_btn_group_inner').length}`)
+    $('.sideSection').show()
+    $('.btn_group').show()
+  }
 
   })
 

@@ -222,3 +222,11 @@ body {
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
+
+.form_input_style{
+  background: transparent;
+  color: white;
+}
+.form_input_style::placeholder { 
+  color: white;
+}

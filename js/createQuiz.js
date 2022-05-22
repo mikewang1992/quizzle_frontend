@@ -43,6 +43,7 @@ $( document ).ready(function() {
   $('.CreateQuiz').click(function(e){
     e.preventDefault();
     var markData=[];
+    var pass= true
     $.each($('.main_quiz_creation_inner'),function(i,v){
       obj1={}
       var marktime=$(v).find('.timeSelect').val()
@@ -50,6 +51,7 @@ $( document ).ready(function() {
       var markQuestion=$(v).find('.quizQuestion').val()
       if(!markQuestion){
         alert(`Question ${i+1} cannot be empty`)
+        pass=false
         return
       }
       var markorder=0;
@@ -79,25 +81,24 @@ $( document ).ready(function() {
       markData.push(obj1)
     })
     console.log(markData)
-
-    axios({
-      method: 'post',
-      url: 'http://localhost:8081/quiz/create',
-      data: {
-        author: "",
-        questions: markData
-      }
-    })
-    .then(function (response) {
-      console.log(response);
-      $('.hero_cover').hide()
-      $('.createResult').show()
-      $('.showQuizId').text(response.data.created_id)
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
+    if(pass){
+      axios({
+        method: 'post',
+        url: 'http://localhost:8081/quiz/create',
+        data: {
+          author: "",
+          questions: markData
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+        $('.hero_cover').hide()
+        $('.createResult').show()
+        $('.showQuizId').text(response.data.created_id)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+    }
   })
-
-
 });

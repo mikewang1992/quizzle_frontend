@@ -22,7 +22,7 @@ $( document ).ready(function() {
           secondLayer+=`
           <div class="col-3 answer_btn">
             <a href="#" class="answerBtn">
-              <div class="squareBtn" correct=${vc.correct} style="background:${getRandomColor()}">${vc.text}</div>
+              <div class="squareBtn shadow-lg" correct=${vc.correct} style="background:${getRandomColor()}">${vc.text}</div>
             </a>
           </div>`
           if(vc.correct==true){
@@ -68,14 +68,14 @@ $( document ).ready(function() {
     var allSelected=$(e.target).parents('.answer_btn_group_inner').find('.squareBtn[select=true]')
     if(isMutiple=="true"){
       if(allSelected.length<parseInt(mutiplecount)){
-        $(e.target).attr('select','true').css('margin-top','-10px').css('border','3px solid #A4077A')
+        $(e.target).attr('select','true').css('margin-top','-10px').css('border','5px solid #A4077A')
       }else{
         return
       }
     }else{
       $(e.target).parents('.answer_btn_group_inner').find('.squareBtn[select=true]')
       if(allSelected.length<1){
-        $(e.target).attr('select','true').css('margin-top','-10px').css('border','3px solid #A4077A')
+        $(e.target).attr('select','true').css('margin-top','-10px').css('border','5px solid #A4077A')
       }else{
         return
       }  

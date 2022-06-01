@@ -31,7 +31,7 @@ $( document ).ready(function() {
         }
       })
 
-      firstLayer+=`<div class="answer_btn_group_inner w-100 row" time=${v.time} question="${v.question} ?" order=${i} ${str} mutiple=${v.multipleanswer} mutipleCount="${correctCount}">${secondLayer}</div>`
+      firstLayer+=`<div class="answerBtnGroupInner w-100 row" time=${v.time} question="${v.question} ?" order=${i} ${str} mutiple=${v.multipleanswer} mutipleCount="${correctCount}">${secondLayer}</div>`
       console.log(v)
     })
     $('.answer_btn_group').html(firstLayer)
@@ -40,7 +40,7 @@ $( document ).ready(function() {
 
   function showQuestions(currentQuestionOrder){
     
-    var currentShowQuestion=$($('.answer_btn_group_inner')[currentQuestionOrder])
+    var currentShowQuestion=$($('.answerBtnGroupInner')[currentQuestionOrder])
     console.log('currentShowQuestion',currentShowQuestion)
     $(currentShowQuestion).show()
     $(currentShowQuestion).siblings().hide()
@@ -51,7 +51,7 @@ $( document ).ready(function() {
       $('.multipleAnswerWarn').hide()
     }
 
-    $('.questionNumShow').text((parseInt(currentQuestionOrder)+1)+'/'+$('.answer_btn_group_inner').length)
+    $('.questionNumShow').text((parseInt(currentQuestionOrder)+1)+'/'+$('.answerBtnGroupInner').length)
     $('.secondsText').text(currentShowQuestion.attr('time')+' Seconds')
     moveProgressBar(currentShowQuestion.attr('time'))
   }
@@ -63,9 +63,9 @@ $( document ).ready(function() {
       return
     }
 
-    var isMutiple=$(e.target).parents('.answer_btn_group_inner').attr('mutiple')
-    var mutiplecount=$(e.target).parents('.answer_btn_group_inner').attr('mutiplecount')
-    var allSelected=$(e.target).parents('.answer_btn_group_inner').find('.squareBtn[select=true]')
+    var isMutiple=$(e.target).parents('.answerBtnGroupInner').attr('mutiple')
+    var mutiplecount=$(e.target).parents('.answerBtnGroupInner').attr('mutiplecount')
+    var allSelected=$(e.target).parents('.answerBtnGroupInner').find('.squareBtn[select=true]')
     if(isMutiple=="true"){
       if(allSelected.length<parseInt(mutiplecount)){
         $(e.target).attr('select','true').css('margin-top','-10px').css('border','5px solid #A4077A')
@@ -73,7 +73,7 @@ $( document ).ready(function() {
         return
       }
     }else{
-      $(e.target).parents('.answer_btn_group_inner').find('.squareBtn[select=true]')
+      $(e.target).parents('.answerBtnGroupInner').find('.squareBtn[select=true]')
       if(allSelected.length<1){
         $(e.target).attr('select','true').css('margin-top','-10px').css('border','5px solid #A4077A')
       }else{
@@ -82,9 +82,9 @@ $( document ).ready(function() {
     }
   })
   
-  $('.submit').click(function(e){
+  $('.submitBtn').click(function(e){
     let currentQuestionOrder=localStorage.getItem('order');
-    var currentShowQuestion=$($('.answer_btn_group_inner')[currentQuestionOrder])
+    var currentShowQuestion=$($('.answerBtnGroupInner')[currentQuestionOrder])
     console.log(currentShowQuestion)
     let finalAnswerCorrectCount=0
     $.each($(currentShowQuestion).find('.squareBtn'), function(i,v){
@@ -111,8 +111,8 @@ $( document ).ready(function() {
     $('.mainSection').hide()
     $('.status').hide()
     $('.answer_btn_group').hide()
-    $('.submit').hide()
-    $('.correctCount').text(`${LS_answerSheet} / ${$('.answer_btn_group_inner').length}`)
+    $('.submitBtn').hide()
+    $('.correctCount').text(`${LS_answerSheet} / ${$('.answerBtnGroupInner').length}`)
     $('.sideSection').show()
     $('.btn_group').show()
   }
@@ -121,16 +121,16 @@ $( document ).ready(function() {
 
   function moveProgressBar(seconds) {
     let currentQuestionOrder=localStorage.getItem('order');
-    var currentShowQuestion=$($('.answer_btn_group_inner')[currentQuestionOrder])
+    var currentShowQuestion=$($('.answerBtnGroupInner')[currentQuestionOrder])
     var progressBar=$('.progress-bar')
     progressBar.css('width','100%')
     progressBar.attr('aria-valuenow',100)
     var progressNumber=100
-    var progressMovePerSecond=100/seconds//每一秒減的量
+    var progressMovePerSecond=100/seconds//calculate the progress bar moving amount per second
     var rolling=setInterval(run,1000)
     function run(){
       progressNumber-=progressMovePerSecond
-      // console.log('progress left',progressNumber)
+      console.log('progress left',progressNumber)
       progressBar.css('width',progressNumber+'%')
       progressBar.attr('aria-valuenow',progressNumber)
       $('.secondsText').text((seconds-=1)+' Seconds')
@@ -141,7 +141,7 @@ $( document ).ready(function() {
       if(progressNumber<=0){
         clearInterval(rolling);
         console.log('timeout!')
-        $('.submit').click()
+        $('.submitBtn').click()
       }
     }
   }

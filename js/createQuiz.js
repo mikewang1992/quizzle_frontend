@@ -1,9 +1,10 @@
 $( document ).ready(function() {
   console.log( "jQuery ready!" );
 
-  $('.question_add_btn').click(function(e){
+  $('.questionAddBtn').click(function(e){
     e.preventDefault();
-    var questionNum=$('.main_quiz_creation_inner').length+1
+    var questionNum = $('.main_quiz_creation_inner').length+1
+    // HTML template for adding more questions
     $('.main_quiz_creation').append(`
     <div class="main_quiz_creation_inner">
       <div class="questions_head">Question ${questionNum}</div>
@@ -40,12 +41,14 @@ $( document ).ready(function() {
     </div>`)
   });
 
-  $('.CreateQuiz').click(function(e){
+  // 1.Allocated and gather all data from questions in HTML attributes
+  // 2.Send the data to quiz/create API in back-end
+  $('.createQuiz').click(function(e){
     e.preventDefault();
     var markData=[];
     var pass= true
     $.each($('.main_quiz_creation_inner'),function(i,v){
-      obj1={}
+      markObject={}
       var marktime=$(v).find('.timeSelect').val()
       console.log('Question',$(v).find('.quizQuestion'))
       var markQuestion=$(v).find('.quizQuestion').val()
@@ -73,12 +76,12 @@ $( document ).ready(function() {
         markChoices.push(obj2)
       })
       console.log('AnswersData',markChoices)
-      obj1.question=markQuestion
-      obj1.choices=markChoices
-      obj1.order=markorder
-      obj1.time=marktime
-      obj1.multipleanswer=multiAns
-      markData.push(obj1)
+      markObject.question=markQuestion
+      markObject.choices=markChoices
+      markObject.order=markorder
+      markObject.time=marktime
+      markObject.multipleanswer=multiAns
+      markData.push(markObject)
     })
     console.log(markData)
     if(pass){

@@ -1,10 +1,13 @@
 $( document ).ready(function() {
+  
+  //Clear localStorage and retrieve 'quiz' data from the API in start of the page
   var quizData=JSON.parse(localStorage.getItem('quiz'))
   localStorage.setItem('order','0');
   localStorage.setItem('answerSheet','0');
   let currentQuestionOrder=localStorage.getItem('order');
   console.log(quizData)
 
+  //Build all the questions from the 'quiz' data and hide some of them
   function buildQuestions(){
     console.log(quizData.questions)
     var firstLayer=''
@@ -38,6 +41,7 @@ $( document ).ready(function() {
   }
   buildQuestions()
 
+  //Show the corresponded questions base on 'order' in localstorage
   function showQuestions(currentQuestionOrder){
     
     var currentShowQuestion=$($('.answerBtnGroupInner')[currentQuestionOrder])
@@ -57,6 +61,7 @@ $( document ).ready(function() {
   }
   showQuestions(currentQuestionOrder)
 
+  //  EventListener for answer button to be select or deselect
   $('.answerBtn').click(function(e){
     if($(e.target).attr('select')=='true'){
       $(e.target).removeAttr('select').css('border','none').css('margin-top','0')
@@ -82,6 +87,9 @@ $( document ).ready(function() {
     }
   })
   
+  // EventListener for submit answer button to 
+  // 1.Calculate correct answers and show next question
+  // 2.Show result when all questions finsihed
   $('.submitBtn').click(function(e){
     let currentQuestionOrder=localStorage.getItem('order');
     var currentShowQuestion=$($('.answerBtnGroupInner')[currentQuestionOrder])
@@ -119,6 +127,8 @@ $( document ).ready(function() {
 
   })
 
+  // 1.Caculate the amount of progress bar animation moving 
+  // 2.When timer/progess bar time-out, trigger submit answer button
   function moveProgressBar(seconds) {
     let currentQuestionOrder=localStorage.getItem('order');
     var currentShowQuestion=$($('.answerBtnGroupInner')[currentQuestionOrder])
@@ -146,6 +156,7 @@ $( document ).ready(function() {
     }
   }
 
+  // Function for giving random color to answer buttons.
   function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';

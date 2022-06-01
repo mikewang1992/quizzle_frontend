@@ -1,6 +1,7 @@
 $( document ).ready(function() {
   console.log( "jQuery ready!" );
 
+  // eventListener for adding more questions to the page
   $('.questionAddBtn').click(function(e){
     e.preventDefault();
     var questionNum = $('.main_quiz_creation_inner').length+1
@@ -52,6 +53,8 @@ $( document ).ready(function() {
       var marktime=$(v).find('.timeSelect').val()
       console.log('Question',$(v).find('.quizQuestion'))
       var markQuestion=$(v).find('.quizQuestion').val()
+
+      // Prevent the question format from user is wrong to send to back-end API
       if(!markQuestion){
         alert(`Question ${i+1} cannot be empty`)
         pass=false
@@ -84,6 +87,7 @@ $( document ).ready(function() {
       markData.push(markObject)
     })
     console.log(markData)
+
     if(pass){
       axios({
         method: 'post',

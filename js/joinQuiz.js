@@ -1,11 +1,16 @@
 $( document ).ready(function() {
+  
+  // 1.Post the quiz ID to the back-end to check
+  // 2.Save the retrieved quiz data to LocalStorage and move to next page
   $('.joinQuiz').click(function(e){
+
     var quizId=$('.quizId').val()
+
     if(!quizId){
       alert('Please fill Quiz ID')
       return
     }
-    // axios.get(`http://localhost:8081/quiz/6275de35a3c5289e6d24656d`)
+
     axios.get(`http://localhost:8081/quiz/${quizId}`)
     .then(function (response) {
       // handle success

@@ -1,12 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <!-- bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-     <!-- css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="css/style.css" />
     <title>Quizzle</title>
   </head>
   <body>
@@ -20,10 +28,15 @@
             <a class="nav-link active" href="/createQuiz.html">Create Quiz</a>
             <a class="nav-link" href="/contact.html">Contact</a>
           </nav>
-          <a href="#" class="btn btn-lg btn-secondary btn_style" style="visibility: hidden;">Sign up</a>
+          <a
+            href="#"
+            class="btn btn-lg btn-secondary btn_style"
+            style="visibility: hidden"
+            >Sign up</a
+          >
         </div>
       </header>
-      
+
       <main class="inner cover hero_cover">
         <h2 class="cover-heading">Create you question here</h2>
         <div class="main_quiz">
@@ -31,7 +44,11 @@
             <div class="main_quiz_creation_inner">
               <div class="questions_head">Question 1</div>
               <div class="input_group createQuizQUS">
-                <input class="form-control input_style quizQuestion" type="text" placeholder="Question">
+                <input
+                  class="form-control input_style quizQuestion"
+                  type="text"
+                  placeholder="Question"
+                />
               </div>
               <select class="custom-select timeSelect" id="inputGroupSelect01">
                 <option selected value="60">Set time</option>
@@ -44,20 +61,52 @@
               <div class="questions_head">Question 1 Answers</div>
               <div class="input_group createQuizANS">
                 <div class="ans_group">
-                  <input class="form-control input_style quizAnswer" type="text" placeholder="Answer A">
-                  <input class="quizAnswer_check checkbox-success" type="checkbox" aria-label="Checkbox for following text input">
+                  <input
+                    class="form-control input_style quizAnswer"
+                    type="text"
+                    placeholder="Answer A"
+                  />
+                  <input
+                    class="quizAnswer_check checkbox-success"
+                    type="checkbox"
+                    aria-label="Checkbox for following text input"
+                  />
                 </div>
                 <div class="ans_group">
-                  <input class="form-control input_style quizAnswer" type="text" placeholder="Answer B">
-                  <input class="quizAnswer_check" type="checkbox" aria-label="Checkbox for following text input">
+                  <input
+                    class="form-control input_style quizAnswer"
+                    type="text"
+                    placeholder="Answer B"
+                  />
+                  <input
+                    class="quizAnswer_check"
+                    type="checkbox"
+                    aria-label="Checkbox for following text input"
+                  />
                 </div>
                 <div class="ans_group">
-                  <input class="form-control input_style quizAnswer" type="text" placeholder="Answer C">
-                  <input class="quizAnswer_check" type="checkbox" aria-label="Checkbox for following text input">
+                  <input
+                    class="form-control input_style quizAnswer"
+                    type="text"
+                    placeholder="Answer C"
+                  />
+                  <input
+                    class="quizAnswer_check"
+                    type="checkbox"
+                    aria-label="Checkbox for following text input"
+                  />
                 </div>
                 <div class="ans_group">
-                  <input class="form-control input_style quizAnswer" type="text" placeholder="Answer D">
-                  <input class="quizAnswer_check" type="checkbox" aria-label="Checkbox for following text input">
+                  <input
+                    class="form-control input_style quizAnswer"
+                    type="text"
+                    placeholder="Answer D"
+                  />
+                  <input
+                    class="quizAnswer_check"
+                    type="checkbox"
+                    aria-label="Checkbox for following text input"
+                  />
                 </div>
               </div>
             </div>
@@ -66,27 +115,36 @@
             <a href="#" class="questionAddBtn">+</a>
           </div>
         </div>
-        <a href="#" class="btn btn-lg btn-secondary btn_style createQuiz">Create Quiz</a>
+        <a href="#" class="btn btn-lg btn-secondary btn_style createQuiz"
+          >Create Quiz</a
+        >
       </main>
 
       <div class="createResult" style="display: none">
         <h2 class="cover-heading">Your Quiz Id is:</h2>
         <h1 class="cover-heading showQuizId">....</h1>
         <div class="btn_group">
-          <a href="/index.html" class="btn btn-lg btn-secondary btn_style">Return home</a>
-          <a href="/joinQuiz.html" class="btn btn-lg btn-secondary btn_style">Join Quiz</a>
+          <a href="/index.html" class="btn btn-lg btn-secondary btn_style"
+            >Return home</a
+          >
+          <a href="/joinQuiz.html" class="btn btn-lg btn-secondary btn_style"
+            >Join Quiz</a
+          >
         </div>
       </div>
 
       <footer class="mastfoot mt-auto">
-        <div class="inner">
-        </div>
+        <div class="inner"></div>
       </footer>
     </div>
 
     <!--js library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <!-- js -->
     <script src="js/app.js"></script>

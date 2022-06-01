@@ -1,12 +1,12 @@
-$( document ).ready(function() {
-  console.log( "jQuery ready!" );
+$(document).ready(function () {
+  console.log("jQuery ready!");
 
   // eventListener for adding more questions to the page
-  $('.questionAddBtn').click(function(e){
+  $(".questionAddBtn").click(function (e) {
     e.preventDefault();
-    var questionNum = $('.main_quiz_creation_inner').length+1
+    var questionNum = $(".main_quiz_creation_inner").length + 1;
     // HTML template for adding more questions
-    $('.main_quiz_creation').append(`
+    $(".main_quiz_creation").append(`
     <div class="main_quiz_creation_inner">
       <div class="questions_head">Question ${questionNum}</div>
       <div class="input_group createQuizQUS">
@@ -39,73 +39,73 @@ $( document ).ready(function() {
           <input class="quizAnswer_check" type="checkbox" aria-label="Checkbox for following text input">
         </div>
       </div>
-    </div>`)
+    </div>`);
   });
 
   // 1.Allocated and gather all data from questions in HTML attributes
   // 2.Send the data to quiz/create API in back-end
-  $('.createQuiz').click(function(e){
+  $(".createQuiz").click(function (e) {
     e.preventDefault();
-    var markData=[];
-    var pass= true
-    $.each($('.main_quiz_creation_inner'),function(i,v){
-      markObject={}
-      var marktime=$(v).find('.timeSelect').val()
-      console.log('Question',$(v).find('.quizQuestion'))
-      var markQuestion=$(v).find('.quizQuestion').val()
+    var markData = [];
+    var pass = true;
+    $.each($(".main_quiz_creation_inner"), function (i, v) {
+      markObject = {};
+      var marktime = $(v).find(".timeSelect").val();
+      console.log("Question", $(v).find(".quizQuestion"));
+      var markQuestion = $(v).find(".quizQuestion").val();
 
       // Prevent the question format from user is wrong to send to back-end API
-      if(!markQuestion){
-        alert(`Question ${i+1} cannot be empty`)
-        pass=false
-        return
+      if (!markQuestion) {
+        alert(`Question ${i + 1} cannot be empty`);
+        pass = false;
+        return;
       }
-      var markorder=0;
-      var multiAns=false;
-      var markChoices=[]
-      var mutiAnsCount=0
-      console.log('QuestionGroup',$(v).find('.quizAnswer'))
-      $.each($(v).find('.quizAnswer'),function(iq,vq){
-        var obj2 = {}
-        obj2.text= $(vq).val()
-        obj2.correct=$(vq).next().prop('checked')
-        if($(vq).next().prop('checked')){
-          mutiAnsCount+=1
+      var markorder = 0;
+      var multiAns = false;
+      var markChoices = [];
+      var mutiAnsCount = 0;
+      console.log("QuestionGroup", $(v).find(".quizAnswer"));
+      $.each($(v).find(".quizAnswer"), function (iq, vq) {
+        var obj2 = {};
+        obj2.text = $(vq).val();
+        obj2.correct = $(vq).next().prop("checked");
+        if ($(vq).next().prop("checked")) {
+          mutiAnsCount += 1;
         }
-        if(mutiAnsCount>1){
-          multiAns=true
+        if (mutiAnsCount > 1) {
+          multiAns = true;
         }
-        console.log(mutiAnsCount)
-        markChoices.push(obj2)
-      })
-      console.log('AnswersData',markChoices)
-      markObject.question=markQuestion
-      markObject.choices=markChoices
-      markObject.order=markorder
-      markObject.time=marktime
-      markObject.multipleanswer=multiAns
-      markData.push(markObject)
-    })
-    console.log(markData)
+        console.log(mutiAnsCount);
+        markChoices.push(obj2);
+      });
+      console.log("AnswersData", markChoices);
+      markObject.question = markQuestion;
+      markObject.choices = markChoices;
+      markObject.order = markorder;
+      markObject.time = marktime;
+      markObject.multipleanswer = multiAns;
+      markData.push(markObject);
+    });
+    console.log(markData);
 
-    if(pass){
+    if (pass) {
       axios({
-        method: 'post',
-        url: 'http://localhost:8081/quiz/create',
+        method: "post",
+        url: "http://localhost:8081/quiz/create",
         data: {
           author: "",
-          questions: markData
-        }
+          questions: markData,
+        },
       })
-      .then(function (response) {
-        console.log(response);
-        $('.hero_cover').hide()
-        $('.createResult').show()
-        $('.showQuizId').text(response.data.created_id)
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+        .then(function (response) {
+          console.log(response);
+          $(".hero_cover").hide();
+          $(".createResult").show();
+          $(".showQuizId").text(response.data.created_id);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
-  })
+  });
 });
